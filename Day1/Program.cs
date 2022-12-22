@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+
 StreamReader reader = new("D:\\Files\\AoC\\input_d1.txt");
 List<Elf> elves = new();
 
