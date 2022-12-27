@@ -1,11 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-StreamReader reader = new("D:\\Files\\AoC\\input_d1.txt");
+StreamReader reader = new("../Input/input_d1.txt");
 List<Elf> elves = new();
 
 string? line = "";
 Elf grah = new();
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
     if (int.TryParse(line, out int Cal))
     {
