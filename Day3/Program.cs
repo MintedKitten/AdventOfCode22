@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Diagnostics.Metrics;
-
 StreamReader reader = new("../../../../Input/input_d3.txt");
 
 string? line = "";
@@ -10,17 +8,18 @@ int linec = 0;
 int prio = 0;
 while ((line = reader.ReadLine()) != null)
 {
-    linec++;
-    Console.WriteLine(lines.Count);
     line = line.Trim();
+    if (lines.Count < 3)
+    {
+        lines.Add(line);
+    }
     if (lines.Count == 3)
     {
+        linec++;
         foreach (char letter in lines[0])
         {
-            // Do things
             if (lines[1].Contains(letter) && lines[2].Contains(letter))
             {
-                
                 if (letter > 'a')
                 {
                     prio += letter - 'a' + 1;
@@ -35,10 +34,6 @@ while ((line = reader.ReadLine()) != null)
             }
         }
         lines = new();
-    }
-    else
-    {
-        lines.Add(line);
     }
 
     //string[] comps = { line[..(line.Length / 2)], line[(line.Length / 2)..] };
