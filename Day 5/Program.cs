@@ -45,7 +45,7 @@ while ((line = reader.ReadLine()) != null)
     {
         moving.Add(stacks[from].Pop());
     }
-    moving.Reverse();
+    moving.Reverse(); // 2nd Star
     for (int i = 0; i < moving.Count; i++)
     {
         stacks[to].Push(moving[i]);
