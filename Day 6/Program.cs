@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-StreamReader reader = new("../../../../Input/input_d6.txt");
+using StreamReader reader = new("../../../../Input/input_d6.txt");
 
 int length = 14, index = 0;
 int[] buffer = new int[length];

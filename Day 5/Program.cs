@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-StreamReader reader = new("../../../../Input/input_d5.txt");
+using StreamReader reader = new("../../../../Input/input_d5.txt");
 
 Stack<string>[] stacks = (Stack<string>[])Array.CreateInstance(typeof(Stack<string>), 9);
 

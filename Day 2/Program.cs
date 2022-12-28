@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-StreamReader reader = new("../Input/input_d2.txt");
+using StreamReader reader = new("../Input/input_d2.txt");
 
 //Dictionary<string, string> rs = new() { { "A", "Rock" }, { "B", "Paper" }, { "C", "Scissors" }, { "X", "Rock" }, { "Y", "Paper" }, { "Z", "Scissors" } };
 //ConcurrentDictionary<string, string> actions = new() { ["A"] = "Rock", ["B"] = "Paper", ["C"] = "Scissors", ["X"] = "Rock", ["Y"] = "Paper", ["Z"] = "Scissors" };

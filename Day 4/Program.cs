@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-StreamReader reader = new("../../../../Input/input_d4.txt");
+using StreamReader reader = new("../../../../Input/input_d4.txt");
 
 string? line = "";
 //int nonlapse = 0, all = 0, lapse = 0;
