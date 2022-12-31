@@ -4,7 +4,6 @@ using StreamReader reader = new("../../../../Input/input_d6.txt");
 
 int length = 14, index = 0;
 int[] buffer = new int[length];
-string? line = "";
 for (int i = 0; reader.Peek() != -1; i++)
 {
     int nc = reader.Read(); 
