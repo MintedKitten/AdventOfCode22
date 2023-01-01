@@ -11,7 +11,7 @@ for (int i = 0; i < stacks.Length; i++)
 
 string? line = "";
 int startIndex = 1, tab = 4;
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
     if (int.TryParse(line[startIndex] + "", out _))
     {
@@ -36,7 +36,7 @@ for (int i = 0; i < stacks.Length; i++)
     });
 }
 line = reader.ReadLine();
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
     string[] instuction = line.Split(' ');
     int loop = int.Parse(instuction[1]), from = int.Parse(instuction[3]) - 1, to = int.Parse(instuction[5]) - 1;

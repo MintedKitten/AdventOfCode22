@@ -8,9 +8,8 @@ string? line = "";
 Dir root = new();
 Dir currentDir = root;
 
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
-    line = line.Trim();
     string[] commands = line.Split(' ');
     if (commands[0] == "$")
     { // Line is a command

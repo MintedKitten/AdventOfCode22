@@ -14,7 +14,7 @@ namespace Day_9
 
             string? line = "";
             RopeKnots ropes = new(10);
-            while ((line = reader.ReadLine()) != null)
+            while ((line = reader.ReadLine()?.Trim()) != null)
             {
                 line = line.Trim();
                 string[] movement = line.Split(' ');

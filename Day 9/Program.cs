@@ -9,9 +9,8 @@ using StreamReader reader = new("../../../../Input/input_d9.txt");
 
 string? line = "";
 Rope rp = new();
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
-    line = line.Trim();
     string[] movement = line.Split(' ');
     switch (movement[0])
     {

@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using StreamReader reader = new("../Input/input_d1.txt");
+using StreamReader reader = new("../../../../Input/input_d1.txt");
 List<Elf> elves = new();
 
 string? line = "";

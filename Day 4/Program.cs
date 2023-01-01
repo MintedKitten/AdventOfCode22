@@ -5,10 +5,9 @@ using StreamReader reader = new("../../../../Input/input_d4.txt");
 string? line = "";
 //int nonlapse = 0, all = 0, lapse = 0;
 int nonlapse = 0, somelapse = 0;
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
     //all++;
-    line = line.Trim();
     string[] assignments = line.Split(',');
     string[][] arr = assignments.Select((arrs) => { return arrs.Split("-"); }).ToArray();
 

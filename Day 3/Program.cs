@@ -6,9 +6,8 @@ string? line = "";
 List<string> lines = new();
 int linec = 0;
 int prio = 0;
-while ((line = reader.ReadLine()) != null)
+while ((line = reader.ReadLine()?.Trim()) != null)
 {
-    line = line.Trim();
     if (lines.Count < 3)
     {
         lines.Add(line);
