@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using StreamReader reader = new("../../../../Input/input_d13t.txt");
+using StreamReader reader = new("../../../../Input/input_d13.txt");
 
 string? line = "";
 int round = 1;
@@ -18,34 +18,76 @@ while ((line = reader.ReadLine()) != null)
     Console.WriteLine();
     writeList(right);
     Console.WriteLine();
-    Console.WriteLine();
+    Order result = compareLeftToRight(left, right);
+    if (result == Order.Correct)
+    {
+        total += round;
+    }
+    Console.WriteLine(result);
     round++;
 }
+Console.WriteLine($"Total: {total}");
 
-//static bool compareLeftToRight(List<object> left, List<object> right)
-//{
-//    for (int i = 0; i < Math.Max(left.Count, right.Count); i++)
-//    {
-//        if (i == left.Count)
-//        {
-//            return true;
-//        }
-//        else if (i == right.Count)
-//        {
-//            return false;
-//        }
-//        else
-//        {
-//            if (left[i].GetType() == typeof(int))
-//            {
-               
-//            }
-//            continue;
-//        }
-//    }
-//    return false;
-//}
+static Order compareLeftToRight(object left, object right)
+{
+    if (left.GetType() == typeof(int) && right.GetType() == typeof(int))
+    {
+        int leftint = (int)left;
+        int rightint = (int)right;
+        if (leftint > rightint)
+        {
+            return Order.Incorrect;
+        }
+        else if (leftint < rightint)
+        {
+            return Order.Correct;
+        }
+        else
+        {
+            return Order.Continue;
+        }
+    }
+    if (left.GetType() == typeof(int) && right.GetType() == typeof(List<object>))
+    {
+        return compareLeftToRight(new List<object>() { left }, right);
+    }
+    if (left.GetType() == typeof(List<object>) && right.GetType() == typeof(int))
+    {
+        return compareLeftToRight(left, new List<object>() { right });
+    }
+    if (left.GetType() == typeof(List<object>) && right.GetType() == typeof(List<object>))
+    {
+        List<object> leftlist = (List<object>)left;
+        List<object> rightlist = (List<object>)right;
+        for (int i = 0; i < Math.Max(leftlist.Count, rightlist.Count); i++)
+        {
+            try
+            {
+                object temp = leftlist[i];
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return Order.Correct;
+            }
+            try
+            {
+                object temp = rightlist[i];
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return Order.Incorrect;
+            }
+            Order result = compareLeftToRight(leftlist[i], rightlist[i]);
+            if (result != Order.Continue)
+            {
+                return result;
+            }
+        }
+    }
+    return Order.Continue;
+}
 
+// Debug after parseing
 static void writeList(List<object> lsob)
 {
     Console.Write("[");
@@ -107,4 +149,11 @@ static List<object> GenNewDistressSigList(string lines, out string remain)
             }
         }
     }
+}
+
+enum Order
+{
+    Correct,
+    Incorrect,
+    Continue
 }
