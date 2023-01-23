@@ -5,28 +5,55 @@ using StreamReader reader = new("../../../../Input/input_d13.txt");
 string? line = "";
 int round = 1;
 int total = 0;
+List<object> signals = new();
 while ((line = reader.ReadLine()) != null)
 {
     string line1 = line.Trim();
     string line2 = reader.ReadLine()?.Trim() ?? "";
     string _ = reader.ReadLine()?.Trim() ?? "";
-
-    Console.WriteLine($"Round: {round}");
     List<object> left = GenNewDistressSigList(line1[1..], out _);
     List<object> right = GenNewDistressSigList(line2[1..], out _);
-    writeList(left);
-    Console.WriteLine();
-    writeList(right);
-    Console.WriteLine();
+    signals.Add(left);
+    signals.Add(right);
     Order result = compareLeftToRight(left, right);
     if (result == Order.Correct)
     {
         total += round;
     }
-    Console.WriteLine(result);
     round++;
 }
 Console.WriteLine($"Total: {total}");
+string extra1 = "[[2]]", extra2 = "[[6]]";
+List<object> ex1 = GenNewDistressSigList(extra1[1..], out _), ex2 = GenNewDistressSigList(extra2[1..], out _);
+signals.Add(ex1);
+signals.Add(ex2);
+signals.Sort((object left, object right) =>
+{
+    Order compareResult = compareLeftToRight(left, right);
+    if (compareResult == Order.Correct) { return -1; }
+    else
+    {
+        return 1;
+    }
+});
+int num1 = 0, num2 = 0;
+for (int i = 0; i < signals.Count; i++)
+{
+    Order compareResult1 = compareLeftToRight(signals[i], ex1);
+    Order compareResult2 = compareLeftToRight(signals[i], ex2);
+
+    if (compareResult1 == Order.Continue)
+    {
+        num1 = i + 1;
+        Console.WriteLine($"Divider 1: {num1}");
+    }
+    if (compareResult2 == Order.Continue)
+    {
+        num2 = i + 1;
+        Console.WriteLine($"Divider 2: {num2}");
+    }
+}
+Console.WriteLine($"Multiplied: {num1 * num2}");
 
 static Order compareLeftToRight(object left, object right)
 {
