@@ -8,13 +8,16 @@ namespace Day_14
 {
     internal class Part_One
     {
-        public static void Main()
+        List<Cords[]> caveMap = new();
+        int[] offSet = new int[] { 500, 0 };
+
+        public static void Main(string[] args)
         {
             using StreamReader reader = new("../../../../Input/input_d14.txt");
 
+            // Sand drop: down, left, right, stop
             string? line = "";
-            List<int[]> rockPath = new();
-            List<List<int[]>> rockpaths = new();
+
             while ((line = reader.ReadLine()) != null)
             {
                 List<int[]> rt = ParseRockPath(line);
@@ -22,8 +25,22 @@ namespace Day_14
                 {
                     Console.Write($"a:{rt[i][0]} b:{rt[i][1]} - ");
                 }
+                //rockPaths.Add(rt);
                 Console.WriteLine();
             }
+
+        }
+
+        static void checkMapExpand(int[] check)
+        { // Check if map needs to expand.
+
+            // Expands to the left, change offSet.
+            return;
+        }
+
+        static int[] offSet(int[] cords)
+        {
+            int[] dropPoint = { 500, 0 };
         }
 
         static List<int[]> ParseRockPath(string path)
@@ -40,6 +57,29 @@ namespace Day_14
                 nextPosition = path.IndexOf("->");
             } while (nextPosition > -1);
             return inner_list;
+        }
+    }
+    public class Cords
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public CordsType Type { get; set; }
+
+        public enum CordsType
+        {
+            Air,
+            Rock,
+            Sand
+        }
+        public Cords(int x, int y, CordsType type)
+        {
+            X = x;
+            Y = y;
+            Type = type;
+        }
+        public bool isAir()
+        {
+            return Type === CordsType.Air;
         }
     }
 }
