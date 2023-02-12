@@ -9,7 +9,8 @@ namespace Day_14
     internal class Part_One
     {
         List<Cords[]> caveMap = new();
-        int[] offSet = new int[] { 500, 0 };
+        int[] dropPoint = { 500, 0 };
+        int[] offSet =  { 0, 0 };
 
         public static void Main(string[] args)
         {
@@ -36,11 +37,6 @@ namespace Day_14
 
             // Expands to the left, change offSet.
             return;
-        }
-
-        static int[] offSet(int[] cords)
-        {
-            int[] dropPoint = { 500, 0 };
         }
 
         static List<int[]> ParseRockPath(string path)
